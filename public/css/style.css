@@ -1,0 +1,106 @@
+body {
+    margin: 0;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    background: var(--background) 0% 0% no-repeat padding-box;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.column-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 80px;
+}
+
+.password-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 50%;
+    text-align: center;
+    flex-direction: top;
+    margin: 15px;
+}
+
+.login-container {
+    width: 50%;
+}
+
+.login-label {
+    color: var(--font);
+    text-align: left;
+    font: normal normal normal 30px/40px Segoe UI;
+    letter-spacing: 0px;
+    color: #707070;
+}
+
+.login-linklabel {
+    color: var(--font);
+    text-align: left;
+    font: normal normal normal 30px/40px Segoe UI;
+    letter-spacing: 0px;
+    color: #707070;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 40vh;
+    padding: 15px;
+}
+
+input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #055CB7;
+    padding: 1em;
+    width: 100%;
+
+    color: var(--font);
+    text-align: left;
+    outline: none;
+    font: normal normal normal 30px/40px Segoe UI;
+    letter-spacing: 0px;
+    color: #707070;
+}
+
+
+@media only screen and (max-device-width: 420px) {
+    .container {
+        flex-direction: column;
+    }
+
+    * {
+        font-size: 36px;
+    }
+
+    .login-container, .logo {
+        width: 100%;
+    }
+
+    form {
+        margin: auto;
+    }
+
+    img {
+        height: 7em;
+        margin: 2em;
+    }
+}

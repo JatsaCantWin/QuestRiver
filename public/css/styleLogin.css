@@ -7,6 +7,19 @@ body {
     align-items: center;
 }
 
+input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #055CB7;
+    width: 100%;
+
+    text-align: left;
+    outline: none;
+    font: normal normal normal 30px/40px Segoe UI;
+    letter-spacing: 0;
+    color: #707070;
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -23,23 +36,10 @@ body {
     align-items: center;
 }
 
-.optionlabels {
+.option-labels {
     display: flex;
     align-items: center;
     flex-direction: column;
     font: normal normal normal 20px/30px Segoe UI;
-    color: #707070;
-}
-
-input {
-    background-color: transparent;
-    border: none;
-    border-bottom: 1px solid #055CB7;
-    width: 100%;
-
-    text-align: left;
-    outline: none;
-    font: normal normal normal 30px/40px Segoe UI;
-    letter-spacing: 0;
     color: #707070;
 }

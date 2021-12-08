@@ -1,0 +1,11 @@
+<svg id="Component_24_1" data-name="Component 24 – 1" xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 72 72">
+  <g id="Rectangle_11" data-name="Rectangle 11" fill="#fff" stroke="#707070" stroke-width="1">
+    <rect width="72" height="72" stroke="none"/>
+    <rect x="0.5" y="0.5" width="71" height="71" fill="none"/>
+  </g>
+  <g id="Icon_feather-log-out" data-name="Icon feather-log-out" transform="translate(8.212 8.212)">
+    <path id="Path_3" data-name="Path 3" d="M20.025,51.076H9.675A5.175,5.175,0,0,1,4.5,45.9V9.675A5.175,5.175,0,0,1,9.675,4.5h10.35" fill="none" stroke="#007ce8" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+    <path id="Path_4" data-name="Path 4" d="M24,36.376,36.938,23.438,24,10.5" transform="translate(14.139 4.35)" fill="none" stroke="#007ce8" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+    <path id="Path_5" data-name="Path 5" d="M44.551,18H13.5" transform="translate(6.525 9.788)" fill="none" stroke="#007ce8" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  </g>
+</svg>

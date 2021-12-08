@@ -1,0 +1,10 @@
+<svg id="Component_25_1" data-name="Component 25 – 1" xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 72 72">
+  <g id="Rectangle_12" data-name="Rectangle 12" fill="#fff" stroke="#707070" stroke-width="1">
+    <rect width="72" height="72" stroke="none"/>
+    <rect x="0.5" y="0.5" width="71" height="71" fill="none"/>
+  </g>
+  <g id="Icon_feather-settings" data-name="Icon feather-settings" transform="translate(11.588 11.588)">
+    <path id="Path_6" data-name="Path 6" d="M26.816,20.158A6.658,6.658,0,1,1,20.158,13.5,6.658,6.658,0,0,1,26.816,20.158Z" transform="translate(4.254 4.254)" fill="none" stroke="#007ce8" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+    <path id="Path_7" data-name="Path 7" d="M42.335,32.57a3.662,3.662,0,0,0,.732,4.039l.133.133a4.441,4.441,0,1,1-6.281,6.281l-.133-.133a3.692,3.692,0,0,0-6.258,2.619v.377a4.439,4.439,0,0,1-8.877,0v-.2a3.662,3.662,0,0,0-2.4-3.351,3.662,3.662,0,0,0-4.039.732l-.133.133A4.441,4.441,0,1,1,8.8,36.92l.133-.133a3.692,3.692,0,0,0-2.619-6.258H5.939a4.439,4.439,0,1,1,0-8.877h.2a3.662,3.662,0,0,0,3.351-2.4,3.662,3.662,0,0,0-.732-4.039l-.133-.133A4.441,4.441,0,1,1,14.9,8.8l.133.133a3.662,3.662,0,0,0,4.039.732h.178a3.662,3.662,0,0,0,2.219-3.351V5.939a4.439,4.439,0,1,1,8.877,0v.2a3.692,3.692,0,0,0,6.258,2.619l.133-.133A4.441,4.441,0,1,1,43.023,14.9l-.133.133a3.662,3.662,0,0,0-.732,4.039v.178a3.662,3.662,0,0,0,3.351,2.219h.377a4.439,4.439,0,0,1,0,8.877h-.2a3.662,3.662,0,0,0-3.351,2.219Z" transform="translate(-1.5 -1.5)" fill="none" stroke="#007ce8" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  </g>
+</svg>

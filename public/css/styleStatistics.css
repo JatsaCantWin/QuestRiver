@@ -1,0 +1,119 @@
+body {
+    margin: 0;
+}
+
+.top-bar {
+    display: flex;
+    height: 25vh;
+
+    box-shadow: 0px 3px 6px #00000029;
+    border: 1px solid #707070;
+}
+
+.logo {
+    margin: 2vw;
+}
+
+.top-stats-bar {
+    display: flex;
+    background-color: #055CB7;
+    width: 100vw;
+
+    align-items: center;
+    justify-content: space-evenly;
+
+    font: normal normal normal 25px/35px Segoe UI;
+    letter-spacing: 0;
+    color: #FFFFFF;
+}
+
+.avatar {
+    display: flex;
+    width: 9vw;
+    height: 21vh;
+}
+
+.stats-name {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-bar {
+    background: #FFFFFF 0 0 no-repeat padding-box;
+    border: 1px solid #707070;
+
+    display: flex;
+
+    width: 20vw;
+    height: 3.4vh;
+}
+
+.level-bar-completed {
+    width: 40%;
+    height: 100%;
+
+    background: #D4AF37 0 0 no-repeat padding-box;
+}
+
+.label-bar-amount {
+    position: absolute;
+    text-align: center;
+    width: 20vw;
+    color: #707070;
+}
+
+.stats-currency {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-evenly;
+    height: 17vh;
+    width: 8vw;
+}
+
+.currency-row {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.currency-image {
+    width: 36px;
+    height: 36px;
+}
+
+.stats-bars {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    height: 17vh;
+}
+
+.health-bar-completed {
+    width: 40%;
+    height: 100%;
+
+    background: #D43737 0 0 no-repeat padding-box;
+}
+
+.magic-bar-completed {
+    width: 40%;
+    height: 100%;
+
+    background: #37A2FF 0 0 no-repeat padding-box;
+}
+
+.stamina-bar-completed {
+    width: 40%;
+    height: 100%;
+
+    background: #00FB32 0 0 no-repeat padding-box;
+}
+
+.stats-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    height: 20vh;
+}

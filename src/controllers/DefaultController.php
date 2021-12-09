@@ -10,7 +10,6 @@ class DefaultController extends AppController {
     }
 
     public function statistics() {
-        die("statistics method");
         $this->render('statistics');
     }
 }

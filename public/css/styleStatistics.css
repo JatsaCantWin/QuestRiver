@@ -221,50 +221,41 @@ body {
 
 .interface-skill-box {
     display: flex;
-    justify-content: flex-start;
-
     width: 29vw;
     height: 53vh;
     border: 1px solid #707070;
+    overflow-y: scroll;
 }
 
-.interface-skill-skillname {
+.interface-skill-box ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0.5vw;
+    width: calc(100% - 1vw);
+}
+
+.interface-skill-box li {
+    width: 100%;
     display: flex;
-    flex-direction: column;
-
-    margin: 1vh;
-    width: 15vw;
+    justify-content: space-between;
+    background: #eeeeee;
+    border-radius: 25px;
+    margin-top: 1vh;
 }
 
-.interface-skill-level {
-    display: flex;
-    flex-direction: column;
-
-    margin: 1vh;
-    width: 10vw;
+.interface-skill-box label {
+    margin-left: 1vw;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: calc(100% - 4.5vw);
 }
 
-.interface-skill-buttonsadd {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
+.interface-skill-box img {
+    align-self: center;
 
-    margin: 1vh;
-    height: 3.8vh;
-    width: 3.8vw;
-}
-
-.interface-skill-label {
-    margin: 5px;
-}
-
-.interface-skill-buttonadd {
-    margin: 7px;
-}
-
-.vertical-line {
-    height: 100%;
-    border: 1px solid #707070;
+    margin-right: 0.25vw;
+    height: 3vh;
+    width: 3vw;
 }
 
 .interface-party {
@@ -274,7 +265,6 @@ body {
 
 .interface-party-box {
     display: flex;
-    justify-content: flex-start;
 
     width: 20vw;
     height: 53vh;

@@ -1,49 +1,50 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" type="text/css" href="public/css/styleCommon.css">
     <link rel="stylesheet" type="text/css" href="public/css/styleStatistics.css">
     <title>Quest River - Statistics</title>
 </head>
 <body>
     <div class = "top-bar">
         <img class = "logo" src="public/img/logo.svg" alt="Logo">
-        <div class = "top-stats-bar">
+        <div class = "stats-bar">
             <img class ="avatar" src="public/img/avatarplaceholder.png" alt="Avatar">
-            <div class = "stats-name">
-                <label class="label-name">Jourum</label>
-                <label class="label-class">Warrior</label>
-                <label class="label-level">Lvl. 10</label>
+            <div class = "flex-column">
+                <label>Jourum</label>
+                <label>Warrior</label>
+                <label>Lvl. 10</label>
                 <div class = "stat-bar">
-                    <div class = "level-bar-completed"></div>
-                    <label class = "label-bar-amount">40/100 XP</label>
+                    <div class = "level-bar"></div>
+                    <label>40/100 XP</label>
                 </div>
             </div>
-            <div class = "stats-currency">
-                <div class = "currency-row">
-                    <img class ="currency-image" src="public/img/money.svg" alt="Gold": >
+            <div class = "flex-column stats-currency">
+                <div>
+                    <img src="public/img/money.svg" alt="Gold": >
                     <label class ="label-currency-money-amount">130</label>
                 </div>
-                <div class = "currency-row">
-                    <img class ="currency-image" src="public/img/bill.svg" alt="Gems: ">
+                <div>
+                    <img src="public/img/bill.svg" alt="Gems: ">
                     <label class ="label-currency-bills-amount">200</label>
                 </div>
-                <div class = "currency-row">
-                    <img class ="currency-image" src="public/img/gem.svg" alt="Gems: ">
+                <div>
+                    <img src="public/img/gem.svg" alt="Gems: ">
                     <label class ="label-currency-gems-amount">20</label>
                 </div>
             </div>
-            <div class = "stats-bars">
+            <div class = "flex-column stats-bars">
                 <div class = "stat-bar">
-                    <div class = "health-bar-completed"></div>
-                    <label class = "label-bar-amount">40/100 HP</label>
+                    <div class = "health-bar"></div>
+                    <label>40/100 HP</label>
                 </div>
                 <div class = "stat-bar">
-                    <div class = "magic-bar-completed"></div>
-                    <label class = "label-bar-amount">40/100 MP</label>
+                    <div class = "magic-bar"></div>
+                    <label>40/100 MP</label>
                 </div>
                 <div class = "stat-bar">
-                    <div class = "stamina-bar-completed"></div>
-                    <label class = "label-bar-amount">40/100 SP</label>
+                    <div class = "stamina-bar"></div>
+                    <label>40/100 SP</label>
                 </div>
             </div>
             <div class = "stats-buttons">
@@ -54,45 +55,46 @@
     </div>
     <div class = "interface">
         <div class = "interface-buttons">
-            <button class = "active-button interface-button">Statistics</button>
-            <button class = "interface-button">Inventory</button>
-            <button class = "interface-button">Quests</button>
-            <button class = "interface-button">The Town</button>
+            <button class = "active-button">Statistics</button>
+            <button>Inventory</button>
+            <button>Quests</button>
+            <button>The Town</button>
         </div>
         <div class = "interface-page">
-            <div class = "interface-stats-column">
-                <img class ="interface-avatar" src="public/img/avatarplaceholder.png" alt="Avatar">
-                <button class = "button-change-avatar">Change Avatar</button>
+            <div class = "flex-column interface-stats">
+                <img src="public/img/avatarplaceholder.png" alt="Avatar">
+                <button>Change Avatar</button>
                 <label>Jourum</label>
                 <label>Warrior</label>
                 <label>Lvl. 10</label>
                 <div class = "stat-bar">
-                    <div class = "level-bar-completed"></div>
-                    <label class = "label-bar-amount">40/100 XP</label>
+                    <div class = "level-bar"></div>
+                    <label>40/100 XP</label>
                 </div>
             </div>
-            <div class ="interface-attributes">
+            <div class ="flex-column interface-box">
                 <label>Attributes:</label>
                 <div class="list-attributes">
-                    <label class = "label-attribute">Strength: 20</label>
-                    <label class = "label-attribute">Dexterity: 20</label>
-                    <label class = "label-attribute">Constitution: 20</label>
-                    <label class = "label-attribute">Intelligence: 20</label>
-                    <label class = "label-attribute">Wisdom: 20</label>
-                    <label class = "label-attribute">Charisma: 20</label>
+                    <label>Strength: 20</label>
+                    <label>Dexterity: 20</label>
+                    <label>Constitution: 20</label>
+                    <label>Intelligence: 20</label>
+                    <label>Wisdom: 20</label>
+                    <label>Charisma: 20</label>
                 </div>
             </div>
-            <div class ="interface-skills">
+            <div class ="interface-box">
                 <label>Skills:</label>
                 <div class = "interface-skill-box">
                     <ul>
                         <li><label>Cooking</label><img src="public/img/buttonadd.svg" alt="Add"></li>
                         <li><label>Programming</label><img src="public/img/buttonadd.svg" alt="Add"></li>
                         <li><label>Drawing</label><img src="public/img/buttonadd.svg" alt="Add"></li>
+                        <li><label>This skill name is deffinitely too long so it needs to be wrapped</label><img src="public/img/buttonadd.svg" alt="Add"></li>
                     </ul>
                 </div>
             </div>
-            <div class = "interface-party">
+            <div class = "interface-box">
                 <label>Party:</label>
                 <div class = "interface-party-box">
 

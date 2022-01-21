@@ -12,7 +12,7 @@ class User
         $this->password = $password;
         $this->username = $username;
     }
-    
+
     public function getEmail(): string
     {
         return $this->email;

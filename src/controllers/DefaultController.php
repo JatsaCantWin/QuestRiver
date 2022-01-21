@@ -6,7 +6,7 @@ class DefaultController extends AppController {
 
     public function index() {
         //TODO
-        $this->render('login');
+        $this->render('login', ['message' => "Hello world!"]);
     }
 
     public function statistics() {

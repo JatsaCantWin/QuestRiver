@@ -6,11 +6,36 @@
     border: 1px solid #707070;
 }
 
-.interface-stats button {
+#buttonOpenAvatarModal {
     font: normal normal normal 30px/40px Segoe UI;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    padding-top: 100px;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #FFFFFF;
+    opacity: 1;
+    margin: auto;
+    padding: 20px;
     border: 1px solid #707070;
-    background: #007CE8;
-    color: #FFFFFF;
+    width: 40%;
+}
+
+#butttonCloseAvatarModal {
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
 }
 
 .interface-box {

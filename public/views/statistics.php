@@ -6,7 +6,7 @@
     <title>Quest River - Statistics</title>
 </head>
 <body>
-    <div class = "top-bar">
+    <section class = "top-bar">
         <img class = "logo" src="public/img/logo.svg" alt="Logo">
         <div class = "stats-bar">
             <img class ="avatar" src="public/img/avatarplaceholder.png" alt="Avatar">
@@ -52,6 +52,23 @@
                 <img class ="stat-button" src="public/img/buttonexit.svg" alt="Exit">
             </div>
         </div>
+    </section>
+    <div id="avatarModal" class="modal">
+        <div class="modal-content">
+            <span id="butttonCloseAvatarModal" class="grey-button">&times;</span>
+            <h1>UPLOAD NEW AVATAR</h1>
+            <form action="changeAvatar">
+                <?php
+                if(isset($messages)){
+                    foreach($messages as $message){
+                        echo $message;
+                    }
+                }
+                ?>
+                <input type="file" name="file">
+                <button type="submit" class="blue-button">send</button>
+            </form>
+        </div>
     </div>
     <div class = "interface">
         <div class = "interface-buttons">
@@ -63,7 +80,23 @@
         <div class = "interface-page">
             <div class = "flex-column interface-stats">
                 <img src="public/img/avatarplaceholder.png" alt="Avatar">
-                <button>Change Avatar</button>
+                <button id="buttonOpenAvatarModal" class="blue-button">Change Avatar</button>
+                <script>
+                    var modal = document.getElementById("avatarModal");
+                    var btn = document.getElementById("buttonOpenAvatarModal");
+                    var span = document.getElementById("butttonCloseAvatarModal");
+                    btn.onclick = function () {
+                        modal.style.display = "block";
+                    }
+                    span.onclick = function () {
+                        modal.style.display = "none";
+                    }
+                    window.onclick = function(event) {
+                        if (event.target == modal) {
+                            modal.style.display = "none";
+                        }
+                    }
+                </script>
                 <label>Jourum</label>
                 <label>Warrior</label>
                 <label>Lvl. 10</label>

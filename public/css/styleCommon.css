@@ -146,3 +146,23 @@ body {
     border: 1px solid #707070;
     color: #707070;
 }
+
+.grey-button {
+    color: #707070;
+}
+
+.grey-button:hover, .grey-button:focus {
+    color: #404040;
+    cursor: pointer;
+}
+
+.blue-button {
+    background-color: #007CE8;
+    border: 1px solid #707070;
+    color: #FFFFFF;
+}
+
+.blue-button:hover, .blue-button:focus {
+    background-color: #0063BA;
+    cursor: pointer;
+}

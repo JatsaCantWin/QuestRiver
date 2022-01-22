@@ -57,7 +57,7 @@
         <div class="modal-content">
             <span id="butttonCloseAvatarModal" class="grey-button">&times;</span>
             <h1>UPLOAD NEW AVATAR</h1>
-            <form action="changeAvatar">
+            <form action="changeAvatar" method="POST" ENCTYPE="multipart/form-data">
                 <?php
                 if(isset($messages)){
                     foreach($messages as $message){

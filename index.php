@@ -8,5 +8,6 @@ $path = parse_url($path, PHP_URL_PATH);
 Routing::get("index", 'DefaultController');
 Routing::get('statistics', 'DefaultController');
 Routing::post('login', 'SecurityController');
+Routing::post('changeAvatar', 'AvatarController');
 
 Routing::run($path);

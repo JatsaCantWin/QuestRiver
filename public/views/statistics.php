@@ -56,18 +56,24 @@
     <div id="avatarModal" class="modal">
         <div class="modal-content">
             <span id="butttonCloseAvatarModal" class="grey-button">&times;</span>
-            <h1>UPLOAD NEW AVATAR</h1>
-            <form action="changeAvatar" method="POST" ENCTYPE="multipart/form-data">
-                <?php
-                if(isset($messages)){
-                    foreach($messages as $message){
-                        echo $message;
-                    }
-                }
-                ?>
-                <input type="file" name="file">
-                <button type="submit" class="blue-button">send</button>
-            </form>
+            <div>
+                <img class = "avatar" src="public/img/avatarplaceholder.png" alt="CurrentAvatar">
+                <form action="changeAvatar" method="POST" ENCTYPE="multipart/form-data">
+                    <h3>Upload New Avatar</h3>
+                    <label id = "avatarModalMessages">
+                        <?php
+                        if(isset($messages)){
+                            foreach($messages as $message){
+                                echo $message;
+                            }
+                        }
+                        ?>
+                    </label>
+                    <input type="file" name="file">
+                    <label>Supported file types: .jpeg, .png</label>
+                    <button type="submit" class="blue-button">Upload</button>
+                </form>
+            </div>
         </div>
     </div>
     <div class = "interface">
@@ -86,7 +92,7 @@
                     var btn = document.getElementById("buttonOpenAvatarModal");
                     var span = document.getElementById("butttonCloseAvatarModal");
                     btn.onclick = function () {
-                        modal.style.display = "block";
+                        modal.style.display = "flex";
                     }
                     span.onclick = function () {
                         modal.style.display = "none";

@@ -25,6 +25,9 @@ class Routing {
         $controller = self::$routes[$action];
         $object = new $controller;
 
+        if ($action == "")
+            $action = "index";
+
         $object->$action();
     }
 }

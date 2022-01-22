@@ -6,11 +6,68 @@
     border: 1px solid #707070;
 }
 
-.interface-stats button {
+#buttonOpenAvatarModal {
     font: normal normal normal 30px/40px Segoe UI;
+}
+
+.modal {
+    display: none;
+    justify-content: center;
+    align-content: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    font: normal normal normal 15px/25px Segoe UI;
+    color: #707070;
+}
+
+.modal-content {
+    height: 45%;
+    width: 15%;
+    background-color: #FFFFFF;
+    opacity: 1;
+    margin: auto;
+    padding: 20px;
     border: 1px solid #707070;
-    background: #007CE8;
-    color: #FFFFFF;
+}
+
+.modal-content div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 60%;
+    text-justify: center;
+}
+
+.modal-content form h3 {
+    font-size: 25px;
+}
+
+#avatarModalMessages {
+    color: #000;
+}
+
+.modal-content form button {
+    font: normal normal normal 30px/40px Segoe UI;
+}
+
+#butttonCloseAvatarModal {
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
 }
 
 .interface-box {

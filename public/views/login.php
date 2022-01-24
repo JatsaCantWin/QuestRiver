@@ -2,6 +2,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/styleCommon.css">
     <link rel="stylesheet" type="text/css" href="public/css/styleLogin.css">
+    <script type="text/javascript" src="public/js/script.js" defer></script>
     <title>Quest River - Login</title>
 </head>
 <body>
@@ -20,16 +21,15 @@
                         }
                         ?>
                     </label>
-                    <input type = "email" name ="email"/>
+                    <input type = "email" name ="registerEmail"/>
                     <label>E-mail</label>
-                    <input type = "password" name ="password"/>
+                    <input type = "password" name ="registerPassword"/>
                     <label>Password</label>
-                    <input type = "" name ="password"/>
-                    <label>Password</label>
-                    <input name ="username"/>
+                    <input type = "password" name ="registerConfirmPassword"/>
+                    <label>Confirm Password</label>
+                    <input name ="registerUsername"/>
                     <label>Username</label>
-                    <label>Choose wisely</label>
-                    <input type = "submit" class="hidden-button">
+                    <label id="registerModalMessage">Choose wisely</label>
                     <button type="submit" class="blue-button">Sign Up</button>
                 </form>
             </div>

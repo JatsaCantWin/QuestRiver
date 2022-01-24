@@ -59,18 +59,20 @@
             <div>
                 <img class = "avatar" src="public/img/avatarplaceholder.png" alt="CurrentAvatar">
                 <form action="changeAvatar" method="POST" ENCTYPE="multipart/form-data">
-                    <h3>Upload New Avatar</h3>
-                    <label class = "modal-messages">
-                        <?php
-                        if(isset($messages)){
-                            foreach($messages as $message){
-                                echo $message;
+                    <div>
+                        <h3>Upload New Avatar</h3>
+                        <label class = "modal-messages">
+                            <?php
+                            if(isset($messages)){
+                                foreach($messages as $message){
+                                    echo $message;
+                                }
                             }
-                        }
-                        ?>
-                    </label>
-                    <input type="file" name="file">
-                    <label>Supported file types: .jpeg, .png</label>
+                            ?>
+                        </label>
+                        <input type="file" name="file">
+                        <label>Supported file types: .jpeg, .png</label>
+                    </div>
                     <button type="submit" class="blue-button">Upload</button>
                 </form>
             </div>

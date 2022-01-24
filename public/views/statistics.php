@@ -55,12 +55,12 @@
     </section>
     <div id="avatarModal" class="modal">
         <div class="modal-content">
-            <span id="butttonCloseAvatarModal" class="grey-button">&times;</span>
+            <span id="buttonCloseAvatarModal" class="grey-button button-close-modal">&times;</span>
             <div>
                 <img class = "avatar" src="public/img/avatarplaceholder.png" alt="CurrentAvatar">
                 <form action="changeAvatar" method="POST" ENCTYPE="multipart/form-data">
                     <h3>Upload New Avatar</h3>
-                    <label id = "avatarModalMessages">
+                    <label class = "modal-messages">
                         <?php
                         if(isset($messages)){
                             foreach($messages as $message){
@@ -90,7 +90,7 @@
                 <script>
                     var modal = document.getElementById("avatarModal");
                     var btn = document.getElementById("buttonOpenAvatarModal");
-                    var span = document.getElementById("butttonCloseAvatarModal");
+                    var span = document.getElementById("buttonCloseAvatarModal");
                     btn.onclick = function () {
                         modal.style.display = "flex";
                     }

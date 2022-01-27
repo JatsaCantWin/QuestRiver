@@ -166,3 +166,59 @@ body {
     background-color: #0063BA;
     cursor: pointer;
 }
+
+.hidden-button {
+    position: absolute;
+    left: -9999px;
+}
+
+.modal {
+    display: none;
+    justify-content: center;
+    align-content: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    font: normal normal normal 15px/25px Segoe UI;
+    color: #707070;
+}
+
+.modal-content {
+    min-width: 15%;
+    background-color: #FFFFFF;
+    opacity: 1;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #707070;
+}
+
+.button-close-modal {
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-between;
+    height: 60%;
+}
+
+.modal-content form h3 {
+    font-size: 25px;
+}
+
+.modal-messages {
+    color: #000;
+    min-height: 25px;
+}
+.modal-content .blue-button {
+    font: normal normal normal 30px/40px Segoe UI;
+}

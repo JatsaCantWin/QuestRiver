@@ -9,6 +9,7 @@
 .idea/**/shelf
 .idea
 public/uploadedAvatars
+config.php
 
 # AWS User-specific
 .idea/**/aws.xml

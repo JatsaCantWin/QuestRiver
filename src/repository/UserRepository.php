@@ -8,7 +8,7 @@ class UserRepository extends Repository
     public function getUser(string $email): ?User
     {
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM public.users users WHERE email = :email
+            SELECT * FROM "Users" WHERE "Email" = :email
         ');
         $stmt->bindParam(':email', $email, PDO::PARAM_STMT);
         $stmt->execute();
@@ -20,16 +20,16 @@ class UserRepository extends Repository
         }
 
         return new User(
-            $user['email'],
-            $user['password'],
-            $user['username']
+            $user['Email'],
+            $user['Password'],
+            $user['Username']
         );
     }
 
     public function addUser(User $user): void
     {
         $stmt = $this->database->connect()->prepare('
-            INSERT INTO Users (email, password, username) 
+            INSERT INTO "Users" ("Email", "Password", "Username") 
             VALUES (?, ?, ?)
         ');
 
@@ -37,6 +37,52 @@ class UserRepository extends Repository
             $user->getEmail(),
             $user->getPassword(),
             $user->getUsername()
+        ]);
+    }
+
+    public function getUserBySessionID(string $sessionID): ?User
+    {
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM "Users" CROSS JOIN getuserbysessionid(?) WHERE getuserbysessionid = "User_ID";
+        ');
+        $stmt->execute([
+            $sessionID
+        ]);
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return new User(
+            $user['Email'],
+            $user['Password'],
+            $user['Username']
+        );
+    }
+
+    public function isValidSession(string $sessionID): bool
+    {
+        return !is_null($this->getUserBySessionID($sessionID));
+    }
+
+    public function startSession(User $user): void
+    {
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM startsession(?)
+        ');
+        $stmt->execute([
+            $user->getEmail()
+        ]);
+
+        $sessionID = $stmt->fetch(PDO::FETCH_ASSOC)['startsession'];
+        setcookie("sessionid", $sessionID, time() + COOKIE_LIFETIME);
+    }
+
+    public function stopSession(string $sessionID): void
+    {
+        $stmt = $this->database->connect()->prepare('
+            DELETE FROM "Sessions" WHERE "session_id" = ?
+        ');
+        $stmt->execute([
+            $sessionID
         ]);
     }
 }

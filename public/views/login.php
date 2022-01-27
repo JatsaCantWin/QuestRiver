@@ -14,8 +14,8 @@
                     <h3>Sign Up</h3>
                     <label class = "modal-messages">
                         <?php
-                        if(isset($messages)){
-                            foreach($messages as $message){
+                        if(isset($registerMessages)){
+                            foreach($registerMessages as $message){
                                 echo $message;
                             }
                         }
@@ -62,7 +62,7 @@
             modal.style.display = "none";
         }
         window.onclick = function(event) {
-            if (event.target == modal) {
+            if (event.target === modal) {
                 modal.style.display = "none";
             }
         }

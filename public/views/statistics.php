@@ -49,7 +49,7 @@
             </div>
             <div class = "stats-buttons">
                 <img class ="stat-button" src="public/img/buttonsettings.svg" alt="Settings">
-                <img class ="stat-button" src="public/img/buttonexit.svg" alt="Exit">
+                <form action="logout"><button type="submit"><img class ="stat-button" src="public/img/buttonexit.svg" alt="Exit"></button></form>
             </div>
         </div>
     </section>
@@ -128,10 +128,10 @@
                 <label>Skills:</label>
                 <div class = "interface-skill-box">
                     <ul>
-                        <li><label>Cooking</label><img src="public/img/buttonadd.svg" alt="Add"></li>
+                        <!-- <li><label>Cooking</label><img src="public/img/buttonadd.svg" alt="Add"></li>
                         <li><label>Programming</label><img src="public/img/buttonadd.svg" alt="Add"></li>
                         <li><label>Drawing</label><img src="public/img/buttonadd.svg" alt="Add"></li>
-                        <li><label>This skill name is deffinitely too long so it needs to be wrapped</label><img src="public/img/buttonadd.svg" alt="Add"></li>
+                        <li><label>This skill name is deffinitely too long so it needs to be wrapped</label><img src="public/img/buttonadd.svg" alt="Add"></li>--!>
                     </ul>
                 </div>
             </div>

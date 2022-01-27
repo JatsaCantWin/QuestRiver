@@ -5,11 +5,18 @@ require_once 'AppController.php';
 class DefaultController extends AppController {
 
     public function index() {
-        //TODO
-        $this->render('login', ['message' => "Hello world!"]);
+        if (isset($_COOKIE['sessionid']))
+        {
+            if (!$this->verifySession($this->getSessionID()))
+                $this->render('login', ['messages' => ["Your session expired."]]);
+            else
+                $this->render('statistics', ['messages' => [$this->getCurrentUser()->getUsername()]]);
+        }
+        else
+            $this->render('login');
     }
 
     public function statistics() {
-        $this->render('statistics');
+        $this->index();
     }
 }

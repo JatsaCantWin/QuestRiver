@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/styleCommon.css">
     <link rel="stylesheet" type="text/css" href="public/css/styleStatistics.css">
+    <script type="text/javascript" src="./public/js/skills.js" defer></script>
     <title>Quest River - Statistics</title>
 </head>
 <body>
@@ -128,10 +129,9 @@
                 <label>Skills:</label>
                 <div class = "interface-skill-box">
                     <ul>
-                        <!-- <li><label>Cooking</label><img src="public/img/buttonadd.svg" alt="Add"></li>
-                        <li><label>Programming</label><img src="public/img/buttonadd.svg" alt="Add"></li>
-                        <li><label>Drawing</label><img src="public/img/buttonadd.svg" alt="Add"></li>
-                        <li><label>This skill name is deffinitely too long so it needs to be wrapped</label><img src="public/img/buttonadd.svg" alt="Add"></li>--!>
+                        <?php foreach ($skills as $skill): ?>
+                            <li><label><?php echo $skill->getSkillName(); ?></label><img src="public/img/buttonadd.svg" alt="Add"></li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 <?php
 
 require_once 'AppController.php';
+require_once __DIR__.'/../repository/SkillRepository.php';
 
 class DefaultController extends AppController {
 
@@ -10,7 +11,10 @@ class DefaultController extends AppController {
             if (!$this->verifySession($this->getSessionID()))
                 $this->render('login', ['messages' => ["Your session expired."]]);
             else
-                $this->render('statistics', ['messages' => [$this->getCurrentUser()->getUsername()]]);
+            {
+                $skillRepository = new SkillRepository();
+                $this->render('statistics', ['skills' => $skillRepository->getUserSkills($this->getCurrentUser()), 'messages' => [$this->getCurrentUser()->getUsername()]]);
+            }
         }
         else
             $this->render('login');

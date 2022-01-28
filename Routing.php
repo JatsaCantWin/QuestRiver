@@ -3,6 +3,7 @@
 require_once 'src/controllers/DefaultController.php';
 require_once 'src/controllers/SecurityController.php';
 require_once 'src/controllers/AvatarController.php';
+require_once 'src/controllers/SkillController.php';
 
 class Routing {
     public static $routes;
@@ -12,6 +13,10 @@ class Routing {
     }
 
     public static function post($url, $controller) {
+        self::$routes[$url] = $controller;
+    }
+
+    public static function delete($url, $controller) {
         self::$routes[$url] = $controller;
     }
 

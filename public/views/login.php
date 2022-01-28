@@ -21,13 +21,13 @@
                         }
                         ?>
                     </label>
-                    <input type = "email" name ="registerEmail"/>
+                    <input class = 'text-input' type = "email" name ="registerEmail"/>
                     <label>E-mail</label>
-                    <input type = "password" name ="registerPassword"/>
+                    <input class = 'text-input' type = "password" name ="registerPassword"/>
                     <label>Password</label>
-                    <input type = "password" name ="registerConfirmPassword"/>
+                    <input class = 'text-input' type = "password" name ="registerConfirmPassword"/>
                     <label>Confirm Password</label>
-                    <input name ="registerUsername"/>
+                    <input class = 'text-input' name ="registerUsername"/>
                     <label>Username</label>
                     <label id="registerModalMessage">Choose wisely</label>
                     <button type="submit" class="blue-button">Sign Up</button>
@@ -44,9 +44,9 @@
             }
         }
         ?>
-        <input type = "email" name ="email"/>
+        <input class = 'text-input' type = "email" name ="email"/>
         <label>E-mail</label>
-        <input type = "password" name ="password"/>
+        <input class = 'text-input' type = "password" name ="password"/>
         <label>Password</label>
         <input type = "submit" class="hidden-button">
     </form>

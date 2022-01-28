@@ -33,6 +33,12 @@
     border: 1px solid #707070;
 }
 
+.interface-box-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .interface-skill-box {
     height: 53vh;
 
@@ -61,15 +67,25 @@
     max-width: calc(100% - 4.5vw);
 }
 
+.button-add {
+    height: 3vh;
+    width: 3vw;
+}
+
 .interface-skill-box img {
     align-self: center;
 
     margin-right: 0.25vw;
-    height: 3vh;
-    width: 3vw;
 }
 
 .interface-party-box {
     height: 53vh;
     border: 1px solid #707070;
+}
+
+#newSkillInput {
+    font: normal normal normal 25px/35px Segoe UI;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    width: 100%;
 }

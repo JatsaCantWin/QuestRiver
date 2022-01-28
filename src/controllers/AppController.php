@@ -22,12 +22,12 @@ class AppController {
         return $this->request === 'DELETE';
     }
 
-    protected function getSessionID(): string
+    protected function getSessionID(): ?string
     {
         if (!isset($_COOKIE['sessionid']))
             return '';
         if (!$this->verifySession($_COOKIE['sessionid']))
-            return '';
+            return null;
 
         setcookie('sessionid', $_COOKIE['sessionid'], time() + COOKIE_LIFETIME);
         return $_COOKIE['sessionid'];

@@ -21,10 +21,9 @@ class SecurityController extends AppController
         {
             $userRepository = new UserRepository();
 
-            $userRepository->stopSession($this->getSessionID());
-            setcookie('sessionid', '', time() - 1);
+            $userRepository->stopSession($_COOKIE['sessionid']);
+            setcookie('sessionid', $_COOKIE['sessionid'], time() - 1);
         }
-        $this->render('login');
     }
 
     public function login()
@@ -56,6 +55,7 @@ class SecurityController extends AppController
     public function logout()
     {
         $this->stopSession();
+        $this->render('login');
     }
 
     public function registrationValidateUser(User $user, &$messages): ?bool

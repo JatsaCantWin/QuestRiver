@@ -18,7 +18,7 @@ class SkillController extends AppController
             $content = trim(file_get_contents("php://input"));
             $decoded = json_decode($content, true);
 
-            if ((!isset($_SERVER["HTTP_SESSIONID"]))||(!isset($decoded['skilname'])))
+            if ((!isset($_SERVER["HTTP_SESSIONID"]))||(!isset($decoded['skillname'])))
                 return http_response_code(401);
 
             $sessionid = $_SERVER["HTTP_SESSIONID"];

@@ -126,11 +126,11 @@
                 </div>
             </div>
             <div class ="interface-box">
-                <label>Skills:</label>
+                <div class ="interface-box-header"><label>Skills:</label><img class="button-add" id="buttonAddSkill" src="public/img/buttonadd.svg" alt="Add"></div>
                 <div class = "interface-skill-box">
                     <ul>
                         <?php foreach ($skills as $skill): ?>
-                            <li><label><?php echo $skill->getSkillName(); ?></label><img src="public/img/buttonadd.svg" alt="Add"></li>
+                            <li><label><?php echo $skill->getSkillName(); ?></label><img class="button-add" src="public/img/buttonadd.svg" alt="Adv"></li>
                         <?php endforeach; ?>
                     </ul>
                 </div>
@@ -142,6 +142,15 @@
                 </div>
             </div>
         </div>
+    </div>
+    <template id="tempSkill-template">
+        <li><input class = "text-input" id="newSkillInput" type="text"></li>
+    </template>
+    <template id="skill-template">
+        <li><label></label><img class="button-add" src="public/img/buttonadd.svg" alt="Adv"></li>
+    </template>
+    <div id="loader" class="opaque-screen">
+        <div class="loader"></div>
     </div>
 </body>
 </html>

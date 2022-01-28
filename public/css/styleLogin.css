@@ -19,17 +19,6 @@ form {
     color: #707070;
 }
 
-input {
-    background-color: transparent;
-    border: none;
-    border-bottom: 1px solid #055CB7;
-
-    text-align: left;
-    outline: none;
-    font: normal normal normal 30px/40px Segoe UI;
-    color: #707070;
-}
-
 label {
     font: normal normal normal 20px/30px Segoe UI;
     color: #707070;
@@ -39,8 +28,4 @@ label {
     margin-top: 2vh;
     min-height: 60px;
     color: #000;
-}
-
-.invalid {
-    border-bottom: 1px solid red;
 }

@@ -51,6 +51,9 @@ class UserRepository extends Repository
 
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
+        if ($user === false)
+            return null;
+
         return new User(
             $user['Email'],
             $user['Password'],
@@ -60,7 +63,7 @@ class UserRepository extends Repository
 
     public function isValidSession(string $sessionID): bool
     {
-        return !is_null($this->getUserBySessionID($sessionID));
+        return !(is_null($this->getUserBySessionID($sessionID)));
     }
 
     public function startSession(User $user): void

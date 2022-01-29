@@ -15,11 +15,25 @@ class AvatarController extends AppController
     {
         if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file']))
         {
-            move_uploaded_file(
-                $_FILES['file']['tmp_name'],
-                dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
-            );
+            $path = dirname(__DIR__).self::UPLOAD_DIRECTORY;
 
+            $img = $_FILES['file']['tmp_name'];
+            $dst = $path.$this->getCurrentUser()->getEmail().".png";
+
+            $img_info = getimagesize($img);
+
+            switch ($img_info[2])
+            {
+                case IMAGETYPE_JPEG : $src = imagecreatefromjpeg($img); break;
+                case IMAGETYPE_PNG : $src = imagecreatefrompng($img); break;
+            }
+
+            $tmp = imagecreatetruecolor($img_info[0], $img_info[1]);
+            imagesavealpha($tmp, true);
+            $color = imagecolorallocatealpha($tmp, 0, 0, 0, 127);
+            imagefill($tmp, 0, 0, $color);
+            imagecopyresampled($tmp, $src, 0, 0, 0, 0, $img_info[0], $img_info[1], $img_info[0], $img_info[1]);
+            imagepng($tmp, $dst);
             return $this->render('statistics', ['messages' => $this->messages]);
         }
         $this->render('statistics', ['messages' => $this->messages]);

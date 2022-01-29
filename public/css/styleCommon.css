@@ -28,6 +28,7 @@ body {
 .avatar {
     width: 9vw;
     height: 21vh;
+    object-fit: cover;
 }
 
 .flex-column {
@@ -52,7 +53,7 @@ body {
 }
 
 .stat-bar div {
-    width: 40%;
+    width: 0%;
     height: 100%;
 }
 

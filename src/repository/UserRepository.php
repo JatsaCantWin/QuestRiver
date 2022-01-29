@@ -26,6 +26,39 @@ class UserRepository extends Repository
         );
     }
 
+    public function getUserStats(User $user): ?array
+    {
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM "User_Stats" INNER JOIN "Users" ON "Users"."User_ID" = "User_Stats"."User_ID" WHERE "Email" = ?
+        ');
+        $stmt->execute([
+            $user->getEmail()
+        ]);
+
+        $stats = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($stats == false) {
+            return null;
+        }
+
+        return [
+            'strength' => $stats['Strength'],
+            'dexterity' => $stats['Dexterity'],
+            'constitution' => $stats['Constitution'],
+            'intelligence' => $stats['Intelligence'],
+            'wisdom' => $stats['Wisdom'],
+            'charisma' => $stats['Charisma'],
+            'health' => $stats['Health'],
+            'magic' => $stats['Magic'],
+            'stamina' => $stats['Stamina'],
+            'xp' => $stats['XP'],
+            'gold' => $stats['Gold'],
+            'bills' => $stats['Bills'],
+            'gems' => $stats['Gems'],
+            'level' => $stats['Level'],
+        ];
+    }
+
     public function addUser(User $user): void
     {
         $stmt = $this->database->connect()->prepare('

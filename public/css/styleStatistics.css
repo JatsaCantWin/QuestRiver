@@ -5,7 +5,7 @@
 .interface-stats img {
     border: 1px solid #707070;
     width: 20vw;
-    height: 100%;
+    height: 70%;
 }
 
 #buttonOpenAvatarModal {
@@ -30,9 +30,18 @@
     flex-direction: column;
     justify-content: space-evenly;
     height: 35vh;
-    padding-left: 2vw;
+    list-style: none;
 
     border: 1px solid #707070;
+}
+
+.list-attributes li {
+    display: flex;
+    justify-content: space-between;
+}
+
+.list-attributes li img {
+    display: none;
 }
 
 .interface-box-header {

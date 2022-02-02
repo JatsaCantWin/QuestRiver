@@ -13,16 +13,38 @@ const characterClass = username.nextElementSibling;
 const level = characterClass.nextElementSibling;
 const listAttributes = document.querySelector('.list-attributes');
 const strength = listAttributes.querySelector('label');
-const dexterity = strength.nextElementSibling;
-const constitution = dexterity.nextElementSibling;
-const intelligence = constitution.nextElementSibling;
-const wisdom = intelligence.nextElementSibling;
-const charisma = wisdom.nextElementSibling;
+const dexterity = strength.parentElement.nextElementSibling.querySelector('label');
+const constitution = dexterity.parentElement.nextElementSibling.querySelector('label');
+const intelligence = constitution.parentElement.nextElementSibling.querySelector('label');
+const wisdom = intelligence.parentElement.nextElementSibling.querySelector('label');
+const charisma = wisdom.parentElement.nextElementSibling.querySelector('label');
+const attributeButtons = listAttributes.querySelectorAll('img');
+const attributeNames = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"];
 
 window.onload = function () {
     refreshStats();
     refreshSkills();
     refreshAvatar();
+    attributeButtons.forEach(function (attribute, i) {
+        attribute.addEventListener('click', function() {upgradeCharacteristic(attributeNames[i])});
+    });
+}
+
+function upgradeCharacteristic(attributeName) {
+    const data = {attributeName: attributeName};
+    const sessionid = getCookie('sessionid');
+
+    fetch("/fetchAdvanceAttribute", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'sessionid': sessionid
+        },
+        body: JSON.stringify(data)
+    }).then(function (response) {
+        if (response.status === 200)
+            refreshStats()
+    });
 }
 
 function refreshStats() {
@@ -48,13 +70,24 @@ function refreshStats() {
         topBarStaminaBar.style.width = stats.stamina + "%";
         topBarStaminaBar.nextElementSibling.innerText = stats.stamina + "/100 SP";
         characterClass.innerText = "";
-        level.innerText = "Lvl. " + stats.level;
+        level.innerText = "Level " + stats.level;
         strength.innerText = "Strength: " + stats.strength;
         dexterity.innerText = "Dexterity: " + stats.dexterity;
         constitution.innerText = "Constitution: " + stats.constitution;
         intelligence.innerText = "Intelligence: " + stats.intelligence;
         wisdom.innerText = "Wisdom: " + stats.wisdom;
         charisma.innerText = "Charisma: " + stats.charisma;
+        if (stats.upgrades > 0)
+        {
+            attributeButtons.forEach(attribute => {
+                attribute.style.display = 'block';
+            });
+        } else
+        {
+            attributeButtons.forEach(attribute => {
+                attribute.style.display = 'none';
+            })
+        }
     });
 }
 

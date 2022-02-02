@@ -10,20 +10,18 @@ buttonRemoveSkill.addEventListener('click', function () {
     if (skillRemovingMode)
     {
         buttonsRemoveSkills.forEach(button => {
-            let newButton = button.cloneNode(true);
-            newButton.src = 'public/img/buttonadd.svg';
-            newButton.onclick = function (){};
-            button.replaceWith(newButton);
+            button = removeEventListeners(button)
+            button.src = 'public/img/buttonadd.svg';
+            button.addEventListener('click', () => advSkill(button.parentElement['skillName'], button.parentElement['lastPracticed']));
         })
         skillRemovingMode = false;
         buttonRemoveSkill.style.filter = "";
     } else
     {
         buttonsRemoveSkills.forEach(button => {
-            let newButton = button.cloneNode(true);
-            newButton.src = 'public/img/buttonremove.svg';
-            newButton.onclick = function(){removeSkill(newButton.parentElement.querySelector('label').innerText)};
-            button.replaceWith(newButton);
+            button = removeEventListeners(button)
+            button.src = 'public/img/buttonremove.svg';
+            button.addEventListener('click', () => removeSkill(button.parentElement['skillName']));
         })
         skillRemovingMode = true;
         buttonRemoveSkill.style.filter = "brightness(0.25)";
@@ -33,6 +31,23 @@ buttonRemoveSkill.addEventListener('click', function () {
 buttonAddSkill.addEventListener("click", function() {
     createTempSkill();
 });
+
+function advSkill(skillName, lastPracticed) {
+    const data = {skillname: skillName, lastpracticed: lastPracticed};
+    const sessionid = getCookie('sessionid');
+
+    fetch("/fetchAdvanceSkill", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'sessionid': sessionid
+        },
+        body: JSON.stringify(data)
+    }).then(function (response) {
+        if (response.status === 200)
+            refreshStats()
+    });
+}
 
 function refreshSkills() {
     fetch("/fetchGetSkill", {
@@ -45,7 +60,7 @@ function refreshSkills() {
     }).then(function (skills) {
         document.querySelector('.interface-skill-box ul').innerHTML ='';
         skills.forEach(skill => {
-            addSkillToList(skill.skillName);
+            addSkillToList(skill.skillName, skill.lastPracticed);
         });
     });
 }
@@ -54,7 +69,6 @@ function addSkill(skillName)
 {
     const data = {skillname: skillName};
     const sessionid = getCookie('sessionid');
-    let responseStatus;
 
     displayLoader();
     fetch("/fetchAddSkill", {
@@ -67,10 +81,8 @@ function addSkill(skillName)
     }).then(function (response) {
         if (response.status === 201)
             refreshSkills()
-        responseStatus = response.status;
     });
     hideLoader();
-    return responseStatus;
 }
 
 function removeSkill(skillName)
@@ -96,7 +108,7 @@ function removeSkill(skillName)
     return responseStatus;
 }
 
-function addSkillToList(skillName)
+function addSkillToList(skillName, lastPracticed)
 {
     const template = document.getElementById('skill-template')
 
@@ -104,9 +116,15 @@ function addSkillToList(skillName)
     const newSkill = listSkills.appendChild(clone);
 
     newSkill.querySelector('label').innerHTML = skillName;
+
+    newSkill['skillName'] = skillName;
+    newSkill['lastPracticed'] = lastPracticed;
+
     if (skillRemovingMode) {
         newSkill.querySelector('img').src = 'public/img/buttonremove.svg';
-        newSkill.onclick = function(){removeSkill(skillName)};
+        newSkill.querySelector('img').addEventListener('click',function(){removeSkill(skillName)});
+    } else {
+        newSkill.querySelector('img').addEventListener('click', function(){advSkill(skillName, lastPracticed)});
     }
 }
 

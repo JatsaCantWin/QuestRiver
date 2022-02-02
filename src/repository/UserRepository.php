@@ -56,7 +56,21 @@ class UserRepository extends Repository
             'bills' => $stats['Bills'],
             'gems' => $stats['Gems'],
             'level' => $stats['Level'],
+            'upgrades' => $stats['AttributeUpgrades']
         ];
+    }
+
+    public function addXP(User $user, int $amount): void
+    {
+        $stmt = $this->database->connect()->prepare('
+            UPDATE "User_Stats" SET "XP" = "XP" + ? FROM "Users"
+            WHERE "Users"."User_ID" = "User_Stats"."User_ID" AND
+                  "Email" = ?;
+        ');
+        $stmt->execute([
+            $amount,
+            $user->getEmail()
+        ]);
     }
 
     public function addUser(User $user): void
@@ -92,6 +106,17 @@ class UserRepository extends Repository
             $user['Password'],
             $user['Username']
         );
+    }
+
+    public function advanceAttribute(User $user, string $attributeName)
+    {
+        $stmt = $this->database->connect()->prepare('
+            CALL advAttribute(?, ?);
+        ');
+        $stmt->execute([
+            $attributeName,
+            $user->getEmail()
+        ]);
     }
 
     public function isValidSession(string $sessionID): bool

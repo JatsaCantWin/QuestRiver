@@ -15,6 +15,8 @@ Routing::post('logout', 'SecurityController');
 Routing::post('register', 'SecurityController');
 Routing::post('changeAvatar', 'AvatarController');
 Routing::post('fetchAddSkill', 'SkillController');
+Routing::post('fetchAdvanceSkill', 'SkillController');
+Routing::post('fetchAdvanceAttribute', 'UserController');
 Routing::delete('fetchDeleteSkill', 'SkillController');
 
 Routing::run($path);

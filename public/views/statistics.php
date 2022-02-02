@@ -16,7 +16,7 @@
             <div class = "flex-column">
                 <label id="topBarUsername">&nbsp</label>
                 <label id="topBarClass"></label>
-                <label id="topBarLevel">Lvl. </label>
+                <label id="topBarLevel">Level </label>
                 <div class = "stat-bar">
                     <div class = "level-bar"></div>
                     <label>0/100 XP</label>
@@ -110,7 +110,7 @@
                 </script>
                 <label>&nbsp</label>
                 <label></label>
-                <label>Lvl. </label>
+                <label>Level </label>
                 <div class = "stat-bar">
                     <div class = "level-bar"></div>
                     <label>0/100 XP</label>
@@ -118,14 +118,14 @@
             </div>
             <div class ="flex-column interface-box">
                 <label>Attributes:</label>
-                <div class="list-attributes">
-                    <label>Strength: </label>
-                    <label>Dexterity: </label>
-                    <label>Constitution: </label>
-                    <label>Intelligence: </label>
-                    <label>Wisdom: </label>
-                    <label>Charisma: </label>
-                </div>
+                <ul class="list-attributes">
+                    <li><label>Strength: </label><img class="button-add button-advance-characteristic" src="public/img/buttonadd.svg" alt="Adv"></li>
+                    <li><label>Dexterity: </label><img class="button-add button-advance-characteristic" src="public/img/buttonadd.svg" alt="Adv"></li>
+                    <li><label>Constitution: </label><img class="button-add button-advance-characteristic" src="public/img/buttonadd.svg" alt="Adv"></li>
+                    <li><label>Intelligence: </label><img class="button-add button-advance-characteristic" src="public/img/buttonadd.svg" alt="Adv"></li>
+                    <li><label>Wisdom: </label><img class="button-add button-advance-characteristic" src="public/img/buttonadd.svg" alt="Adv"></li>
+                    <li><label>Charisma: </label><img class="button-add button-advance-characteristic" src="public/img/buttonadd.svg" alt="Adv"></li>
+                </ul>
             </div>
             <div class ="interface-box">
                 <div class ="interface-box-header">

@@ -34,3 +34,10 @@ async function getUserStats() {
         return data
     });
 }
+
+function removeEventListeners(obj)
+{
+    let clone = obj.cloneNode(true);
+    obj.parentNode.replaceChild(clone, obj);
+    return clone;
+}

@@ -2,7 +2,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/styleCommon.css">
     <link rel="stylesheet" type="text/css" href="public/css/styleLogin.css">
-    <script type="text/javascript" src="../js/register.js" defer></script>
+    <script type="text/javascript" src="./public/js/register.js" defer></script>
     <title>Quest River - Login</title>
 </head>
 <body>

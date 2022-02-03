@@ -13,7 +13,8 @@ class AvatarController extends AppController
 
     public function changeAvatar()
     {
-        if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file']))
+        $isUploaded = is_uploaded_file($_FILES['file']['tmp_name']);
+        if ($this->isMethod("POST") && $isUploaded && $this->validate($_FILES['file']))
         {
             $path = dirname(__DIR__).self::UPLOAD_DIRECTORY;
 
@@ -36,6 +37,8 @@ class AvatarController extends AppController
             imagepng($tmp, $dst);
             return $this->render('statistics', ['messages' => $this->messages]);
         }
+        if (!$isUploaded)
+            $this->messages[] = 'No file uploaded';
         $this->render('statistics', ['messages' => $this->messages]);
         echo "<script>document.getElementById(\"avatarModal\").style.display = \"flex\";</script>";
     }

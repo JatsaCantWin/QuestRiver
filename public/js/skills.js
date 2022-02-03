@@ -1,6 +1,6 @@
 const buttonAddSkill = document.getElementById('buttonAddSkill');
 const buttonRemoveSkill = document.getElementById('buttonRemoveSkill');
-const listSkills = document.querySelector('.interface-skill-box ul');
+const listSkills = document.querySelector('.interface-list-box ul');
 
 let skillRemovingMode = false;
 
@@ -45,7 +45,10 @@ function advSkill(skillName, lastPracticed) {
         body: JSON.stringify(data)
     }).then(function (response) {
         if (response.status === 200)
+        {
+            refreshTopBar()
             refreshStats()
+        }
     });
 }
 
@@ -58,7 +61,7 @@ function refreshSkills() {
     }).then(function (response) {
         return response.json();
     }).then(function (skills) {
-        document.querySelector('.interface-skill-box ul').innerHTML ='';
+        document.querySelector('.interface-list-box ul').innerHTML ='';
         skills.forEach(skill => {
             addSkillToList(skill.skillName, skill.lastPracticed);
         });

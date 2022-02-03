@@ -30,7 +30,7 @@ class SecurityController extends AppController
     {
         $userRepository = new UserRepository();
 
-        if ($this->isGet())
+        if ($this->isMethod("GET"))
         {
             return $this->render('login');
         }
@@ -91,7 +91,7 @@ class SecurityController extends AppController
 
     public function register()
     {
-        if (!$this->isPost())
+        if (!$this->isMethod("POST"))
         {
             $this->render('login');
             echo "<script>document.getElementById(\"registerModal\").style.display = \"flex\";</script>";

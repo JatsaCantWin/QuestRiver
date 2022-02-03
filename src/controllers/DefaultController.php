@@ -7,26 +7,40 @@ require_once __DIR__.'/../repository/SkillRepository.php';
 
 class DefaultController extends AppController {
 
-    public function index() {
-        if (isset($_COOKIE['sessionid']))
+    private $messages = [];
+
+    public function isLoggedIn()
+    {
+        if (!isset($_COOKIE['sessionid']))
+            return false;
+        if (is_null($this->getSessionID()))
         {
-            if (is_null($this->getSessionID()))
-            {
-                $securityController = new SecurityController();
-                $securityController->stopSession();
-                $this->render('login', ['messages' => ["Your session expired."]]);
-            }
-            else
-            {
-                $skillRepository = new SkillRepository();
-                $this->render('statistics', ['skills' => $skillRepository->getUserSkills($this->getCurrentUser()), 'messages' => [$this->getCurrentUser()->getUsername()]]);
-            }
+            $securityController = new SecurityController();
+            $securityController->stopSession();
+            $this->messages[] = 'Your session expired';
+            return false;
         }
+        return true;
+    }
+
+    public function index() {
+        if (!$this->isLoggedIn())
+            $this->render('login', ['messages' => $this->messages]);
         else
-            $this->render('login');
+            $this->statistics();
     }
 
     public function statistics() {
-        $this->index();
+        if ($this->isLoggedIn())
+            $this->render('statistics');
+        else
+            $this->index();
+    }
+
+    public function quests() {
+        if ($this->isLoggedIn())
+            $this->render('quests');
+        else
+            $this->index();
     }
 }

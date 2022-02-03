@@ -113,12 +113,14 @@ body {
     justify-content: space-evenly;
     height: 6vh;
     z-index: -1;
+    overflow: hidden;
 
     background: #EEEEEE 0 0 no-repeat padding-box;
 }
 
 .interface-buttons button {
     width: 22.5vw;
+    height: 6vh;
     margin-top: 0.5vh;
     border-top-left-radius: 44px;
     border-top-right-radius: 44px;
@@ -126,7 +128,6 @@ body {
     font: normal normal normal 30px/40px Segoe UI;
     background: #EEEEEE 0 0 no-repeat padding-box;
     box-shadow: 0 3px 6px #00000029;
-    color: #707070;
     border: 1px solid #707070;
     border-bottom: none;
 }
@@ -139,7 +140,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-
     height: 68.6vh;
 
     font: normal normal normal 25px/35px Segoe UI;
@@ -267,4 +267,83 @@ body {
 
 .invalid {
     border-bottom: 1px solid red;
+}
+
+.interface-box {
+    height: 90%;
+    width: 19vw;
+}
+
+.interface-box-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.interface-box-header div {
+    display: flex;
+    justify-content: space-between;
+    width: 4vw;
+    align-items: center;
+}
+
+.interface-list-box {
+    height: 53vh;
+
+    border: 1px solid #707070;
+    overflow-y: scroll;
+}
+
+.interface-list-box img {
+    align-self: center;
+
+    margin-right: 0.25vw;
+}
+
+.interface-list-box ul {
+    list-style: none;
+    margin: 0;
+    padding: 0.5vw;
+    width: calc(100% - 1vw);
+}
+
+.interface-list-box li {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 25px;
+    margin-top: 1vh;
+
+    background: #eeeeee;
+}
+
+.interface-list-box label {
+    margin-left: 1vw;
+    max-width: calc(100% - 4.5vw);
+}
+
+.interface-prompt-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5vw;
+    height: 53vh;
+    border: 1px solid #707070;
+}
+
+.button-add {
+    height: 3vh;
+    width: 3vh;
+    padding-right: 1vw;
+}
+
+.button-add:hover, .button-add:focus {
+    cursor: pointer;
+    filter: brightness(0.25);
+}
+
+#newElementInput {
+    font: normal normal normal 25px/35px Segoe UI;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    width: 100%;
 }

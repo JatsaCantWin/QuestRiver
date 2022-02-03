@@ -1,13 +1,3 @@
-const topBarUsername = document.getElementById('topBarUsername');
-const topBarClass = document.getElementById('topBarClass');
-const topBarLevel = document.getElementById('topBarLevel');
-const topBarXPBars = document.querySelectorAll('.level-bar');
-const topBarMoney = document.querySelector('.label-currency-money-amount');
-const topBarBills = document.querySelector('.label-currency-bills-amount');
-const topBarGems = document.querySelector('.label-currency-gems-amount');
-const topBarHealthBar = document.querySelector('.health-bar');
-const topBarMagicBar = document.querySelector('.magic-bar');
-const topBarStaminaBar = document.querySelector('.stamina-bar');
 const username = document.querySelector('.interface-stats label');
 const characterClass = username.nextElementSibling;
 const level = characterClass.nextElementSibling;
@@ -20,14 +10,42 @@ const wisdom = intelligence.parentElement.nextElementSibling.querySelector('labe
 const charisma = wisdom.parentElement.nextElementSibling.querySelector('label');
 const attributeButtons = listAttributes.querySelectorAll('img');
 const attributeNames = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"];
+const avatarUploadImage = document.querySelector('#avatarModal .avatar');
+const avatarUploadInput = document.querySelector('#avatarModal form input');
+const avatarUploadButton = document.querySelector('#avatarModal form button');
+const avatarUploadMessages = document.querySelector('#avatarModal .modal-messages')
 
 window.onload = function () {
+    refreshTopBar();
     refreshStats();
     refreshSkills();
     refreshAvatar();
     attributeButtons.forEach(function (attribute, i) {
         attribute.addEventListener('click', function() {upgradeCharacteristic(attributeNames[i])});
     });
+}
+
+let uploaded = false;
+
+avatarUploadInput.onchange = function () {
+    const [file] = avatarUploadInput.files;
+    const acceptedTypes = ['image/jpeg', "image/png"];
+    if (file && acceptedTypes.includes(file['type'])) {
+        avatarUploadImage.src = URL.createObjectURL(file);
+        uploaded = true;
+        avatarUploadMessages.innerText = '';
+    } else
+    {
+        uploaded = false;
+        avatarUploadMessages.innerText = 'Unsupported file';
+    }
+}
+
+avatarUploadButton.onclick = function () {
+    if (!uploaded)
+    {
+        event.preventDefault();
+    }
 }
 
 function upgradeCharacteristic(attributeName) {
@@ -49,26 +67,10 @@ function upgradeCharacteristic(attributeName) {
 
 function refreshStats() {
     getUser().then(function(user) {
-        topBarUsername.innerText = user.username;
         username.innerText = user.username;
     });
 
     getUserStats().then(function (stats) {
-        topBarClass.innerText = "";
-        topBarLevel.innerText = "Level " + stats.level;
-        topBarXPBars.forEach(bar => {
-            bar.style.width = stats.xp + '%';
-            bar.nextElementSibling.innerText = stats.xp + "/100 XP";
-        })
-        topBarMoney.innerText = stats.gold;
-        topBarBills.innerText = stats.bills;
-        topBarGems.innerText = stats.gems;
-        topBarHealthBar.style.width = stats.health + "%";
-        topBarHealthBar.nextElementSibling.innerText = stats.health + "/100 HP";
-        topBarMagicBar.style.width = stats.magic + "%";
-        topBarMagicBar.nextElementSibling.innerText = stats.magic + "/100 MP";
-        topBarStaminaBar.style.width = stats.stamina + "%";
-        topBarStaminaBar.nextElementSibling.innerText = stats.stamina + "/100 SP";
         characterClass.innerText = "";
         level.innerText = "Level " + stats.level;
         strength.innerText = "Strength: " + stats.strength;
@@ -89,16 +91,4 @@ function refreshStats() {
             })
         }
     });
-}
-
-function refreshAvatar()
-{
-    const avatars = document.querySelectorAll('.avatar');
-
-    getUser().then(function (user) {
-        avatars.forEach(avatar => {
-            avatar.src = 'public/uploadedAvatars/'+user.email+'.png?' + Date.now().toString();
-        })
-    });
-
 }

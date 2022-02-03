@@ -2,55 +2,56 @@
 
 include_once 'AppController.php';
 include_once __DIR__.'/../repository/UserRepository.php';
-include_once __DIR__.'/../repository/SkillRepository.php';
+include_once __DIR__.'/../repository/QuestRepository.php';
 
-class SkillController extends AppController
+class QuestController extends AppController
 {
-    public function fetchAdvanceSkill()
+    public function fetchCompleteQuest()
     {
         $input = [];
-        $errorResponseCode = $this->fetchRequest(['skillname', 'lastpracticed'], "POST", $input);
+        $errorResponseCode = $this->fetchRequest(['questName'], "POST", $input);
         if ($errorResponseCode > 0)
             return http_response_code($errorResponseCode);
 
         $userRepository = new UserRepository();
+        $questRespository = new QuestRepository();
         $user = $userRepository->getUserBySessionID($_SERVER['HTTP_SESSIONID']);
-        $userRepository->addXP($user, 2);
+        $questRespository->finishUserQuest($user, $input['questName']);
         return http_response_code(200);
     }
 
-    public function fetchAddSkill()
+    public function fetchAddQuest()
     {
         $input = [];
-        $errorResponseCode = $this->fetchRequest(['skillname'], "POST", $input);
+        $errorResponseCode = $this->fetchRequest(["questName"], "POST", $input);
         if ($errorResponseCode > 0)
             return http_response_code($errorResponseCode);
 
         $userRepository = new UserRepository();
-        $skillRepository = new SkillRepository();
+        $questRepository = new QuestRepository();
         $user = $userRepository->getUserBySessionID($_SERVER["HTTP_SESSIONID"]);
-        foreach ($skillRepository->getUserSkills($user) as $skill)
-            if ($skill->getSkillName() === $input["skillname"])
+        foreach ($questRepository->getUserQuests($user) as $quest)
+            if ($quest->getQuestName() === $input["questName"])
                 return http_response_code(409);
-        $skillRepository->addUserSkill($user, $input["skillname"]);
+        $questRepository->addUserQuest($user, $input["questName"]);
         return http_response_code(201);
     }
 
-    public function fetchDeleteSkill()
+    public function fetchDeleteQuest()
     {
         $input = [];
-        $errorResponseCode = $this->fetchRequest(["skillname"], "DELETE", $input);
+        $errorResponseCode = $this->fetchRequest(["questName"], "DELETE", $input);
         if ($errorResponseCode > 0)
             return http_response_code($errorResponseCode);
 
         $userRepository = new UserRepository();
-        $skillRepository = new SkillRepository();
+        $questRepository = new QuestRepository();
         $user = $userRepository->getUserBySessionID($_SERVER['HTTP_SESSIONID']);
-        $skillRepository->deleteUserSkill($user, $input["skillname"]);
+        $questRepository->deleteUserQuest($user, $input["questName"]);
         return http_response_code(200);
     }
 
-    public function fetchGetSkill()
+    public function fetchGetQuests()
     {
         $input = [];
         $errorResponseCode = $this->fetchRequest([], "GET", $input);
@@ -58,11 +59,11 @@ class SkillController extends AppController
             return http_response_code($errorResponseCode);
 
         $userRepository = new UserRepository();
-        $skillRepository = new SkillRepository();
+        $questRepository = new QuestRepository();
         $user = $userRepository->getUserBySessionID($_SERVER['HTTP_SESSIONID']);
         $result = [];
-        foreach ($skillRepository->getUserSkills($user) as $skill)
-            $result[] = ['skillName' => $skill->getSkillName(), 'lastPracticed' => $skill->getLastPracticed()];
+        foreach ($questRepository->getUserQuests($user) as $quest)
+            $result[] = ['questName' => $quest->getQuestName(), 'finished' => $quest->isFinished()];
         header('Content-type: application/json');
         echo json_encode($result);
         return http_response_code(200);

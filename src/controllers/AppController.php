@@ -7,19 +7,9 @@ class AppController {
         $this->request = $_SERVER['REQUEST_METHOD'];
     }
 
-    protected function isGet(): bool
+    protected function isMethod(string $method): bool
     {
-        return $this->request === 'GET';
-    }
-
-    protected function isPost(): bool
-    {
-        return $this->request === 'POST';
-    }
-
-    protected function isDelete(): bool
-    {
-        return $this->request === 'DELETE';
+        return $this->request === $method;
     }
 
     protected function getSessionID(): ?string
@@ -61,5 +51,29 @@ class AppController {
         }
 
         print $output;
+    }
+
+    protected function fetchRequest(array $arguments, string $method, array &$input): int
+    {
+        $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+        if (!$this->isMethod($method))
+            return 405;
+        if ((!empty($arguments))&&($contentType !== "application/json"))
+            return 400;
+        $content = trim(file_get_contents("php://input"));
+        $decoded = json_decode($content, true);
+
+        if (!isset($_SERVER["HTTP_SESSIONID"]))
+            return 401;
+        if (!$this->verifySession($_SERVER["HTTP_SESSIONID"]))
+            return 401;
+        foreach ($arguments as $argument)
+            if (!isset($decoded[$argument]))
+                return 401;
+
+        foreach ($arguments as $argument)
+            $input[$argument] = $decoded[$argument];
+            //array_push($input, $argument, $decoded[$argument]);
+        return 0;
     }
 }

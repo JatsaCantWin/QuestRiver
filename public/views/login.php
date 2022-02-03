@@ -29,7 +29,6 @@
                     <label>Confirm Password</label>
                     <input class = 'text-input' name ="registerUsername"/>
                     <label>Username</label>
-                    <label id="registerModalMessage">Choose wisely</label>
                     <button type="submit" class="blue-button">Sign Up</button>
                 </form>
             </div>

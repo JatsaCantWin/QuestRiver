@@ -41,3 +41,8 @@ function removeEventListeners(obj)
     obj.parentNode.replaceChild(clone, obj);
     return clone;
 }
+
+function ifImageExists(image_url, onload){
+    var img = new Image();
+    img.onload = onload;
+}

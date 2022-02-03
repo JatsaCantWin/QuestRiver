@@ -91,7 +91,7 @@ class UserRepository extends Repository
     public function getUserBySessionID(string $sessionID): ?User
     {
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM "Users" CROSS JOIN getuserbysessionid(?) WHERE getuserbysessionid = "User_ID";
+            SELECT * FROM "Users" CROSS JOIN getuserbysessionid(?) INNER JOIN "Roles" ON "Roles"."Role_ID" = "Users"."Role_ID" WHERE getuserbysessionid = "User_ID";
         ');
         $stmt->execute([
             $sessionID
@@ -105,7 +105,8 @@ class UserRepository extends Repository
         return new User(
             $user['Email'],
             $user['Password'],
-            $user['Username']
+            $user['Username'],
+            $user['RoleName']
         );
     }
 

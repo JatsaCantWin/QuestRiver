@@ -99,7 +99,8 @@ class SecurityController extends AppController
         }
 
         $userRepository = new UserRepository();
-        $user = new User($_POST['registerEmail'], password_hash($_POST['registerPassword'], PASSWORD_DEFAULT), $_POST['registerUsername']);
+        $user = new User($_POST['registerEmail'], password_hash($_POST['registerPassword'], PASSWORD_DEFAULT), $_POST['registerUsername'], 'Player');
+        copy(__DIR__.'/../../public/img/avatarplaceholder.png', __DIR__.'/../../public/uploadedAvatars/'.$user->getEmail().'.png');
         $messages = [];
         if (!($this->registrationValidateUser($user, $messages)))
         {
